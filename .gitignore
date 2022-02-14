@@ -4,6 +4,8 @@
 build/Release
 
 # Dependency directories
-node_modules/
+node_modules
+dist
+package-lock.json
 
 

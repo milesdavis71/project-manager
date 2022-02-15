@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "s": "parcel index.html --open firefox",
+    "start": "parcel index.html --open firefox",
     "build": "parcel build src/index.ts",
     "test": "jest",
     "lint": "eslint",

@@ -1,19 +1,18 @@
-import { Project, ProjectStatus } from "../models/project";
+import { Project, ProjectStatus } from '../models/project';
 
 type Listener<T> = (items: T[]) => void;
 
 class State<T> {
-  protected listeners: Listener<T>[] = [];
-  addListener(listenerFn: Listener<T>) {
+  listeners: Listener<T>[] = [];
+  addListeners(listenerFn: Listener<T>) {
     this.listeners.push(listenerFn);
   }
 }
 
-export class ProjectState extends State<Project> {
-  private projects: Project[] = [];
+class ProjectState extends State<Project> {
+  projects: Project[] = [];
   private static instance: ProjectState;
-
-  private constructor() {
+  constructor() {
     super();
   }
 
@@ -25,13 +24,22 @@ export class ProjectState extends State<Project> {
     return this.instance;
   }
 
-  addProject(title: string, desc: string, numOfpeople: number) {
+  addProject(title: string, desc: string, numOfPeople: number) {
     const newProject = new Project(
       Math.random().toString(),
       title,
       desc,
-      numOfpeople,
+      numOfPeople,
       ProjectStatus.Active
     );
+    this.projects.push(newProject);
+    console.log(newProject);
+
+    this.updateListeners();
+  }
+
+  private updateListeners() {
+    this.listeners.map(listenerFn => listenerFn(this.projects.slice()));
   }
 }
+export const projectState = ProjectState.getInstance();

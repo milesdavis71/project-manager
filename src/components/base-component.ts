@@ -28,10 +28,10 @@ export abstract class Component<U extends HTMLElement, T extends HTMLElement> {
 
   private attach(insertAtBeginning: boolean) {
     this.hostElement.insertAdjacentElement(
-      insertAtBeginning ? "afterbegin" : "beforeend",
+      insertAtBeginning ? 'afterbegin' : 'beforeend',
       this.element
     );
   }
   abstract configure(): void;
-  abstract renderConent(): void;
+  abstract renderContent(): void;
 }

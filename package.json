@@ -13,7 +13,8 @@
   },
   "author": "Pitju",
   "license": "ISC",
-  "devDependencies": {
-    "parcel": "^2.0.0-rc.0"
+  "devDependencies": {},
+  "dependencies": {
+    "parcel": "^2.3.2"
   }
 }
